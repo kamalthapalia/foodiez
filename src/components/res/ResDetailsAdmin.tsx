@@ -25,6 +25,7 @@ const ResDetailsAdmin = () => {
         return () => {
             document.removeEventListener("keydown", handleEsc);
         };
+        
     }, []);
     return (
         <div className={``}>{editOpen &&
