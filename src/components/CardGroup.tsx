@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import FoodCard from "./FoodCard.tsx";
 import cardprops from "../utils/CardProps.tsx";
+import {Product} from "../utils/types.ts";
 
 type Props = {
     title: string;
-    content: cardprops[];
+    content: Product[];
 };
 
 const CardGroup: React.FC<Props> = ({title, content}) => {
-    const [filter, setFilter] = useState<string>("");
+    const [filter, setFilter] = useState<string>("All");
 
     // Function to handle filter change
     const handleFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -16,6 +17,18 @@ const CardGroup: React.FC<Props> = ({title, content}) => {
     };
 
     // Filtered content based on the selected filter
+    const filteredContent = content.filter((val) => {
+        switch (filter) {
+            case "popular":
+                return content;
+            case "cheap":
+                return content.sort((a, b) => a.price - b.price);
+            case "expensive":
+                return content.sort((a, b) => b.price - a.price);
+            default:
+                return true; // 'All' case
+        }
+    });
 
     return (
         <div className={`container mx-auto`}>
@@ -32,7 +45,7 @@ const CardGroup: React.FC<Props> = ({title, content}) => {
                 </div>
             </div>
             <div className={`grid grid-cols-4 gap-7`}>
-                {content.map((val, index) => (<FoodCard key={index} content={val}/>))}
+                {filteredContent.map((val, index) => (<FoodCard key={index} content={val}/>))}
             </div>
         </div>
     );

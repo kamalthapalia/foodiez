@@ -1,10 +1,11 @@
 import {AiOutlineHeart, AiOutlineMinus, AiOutlinePlus, AiOutlineShoppingCart} from "react-icons/ai";
 import {useState} from "react";
-import cardprops from "../utils/CardProps.tsx";
 import {Link} from "react-router-dom";
+import {Product} from "../utils/types.ts";
+import url from "../utils/url.tsx";
 
 type props = {
-    content: cardprops
+    content: Product
 }
 const FoodCard = ({content}: props) => {
     const [orderitem, setOrderitem] = useState(0)
@@ -14,10 +15,10 @@ const FoodCard = ({content}: props) => {
             <div className={`h-[240px] relative`}>
                 <div className={`flex justify-between h-full`}>
                     <div className={` w-[45px] h-0`}></div>
-                    <Link to={`/f/id`}>
+                    <Link to={`/f/${content.id}`}>
                         <img className={`w-[200px] mt-3 h-[200px] rounded-full object-cover`}
-                             src="https://images.pexels.com/photos/1487511/pexels-photo-1487511.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                             alt={content.image}/>
+                             src={`${url}/product/image/${content.image}`}
+                             alt={content.name}/>
                     </Link>
                     <div
                         className={`bg-amber-400 text-white rounded-lg w-[45px] h-[45px] flex items-center justify-center`}>
@@ -28,8 +29,9 @@ const FoodCard = ({content}: props) => {
             </div>
             <div className={`flex`}>
                 <div className={`flex-grow`}>
-                    <Link to={`/f/id`}><p className={`text-lg font-bold`}>{content.title}</p></Link>
-                    <Link to={`/r/id`}><p className={`text-sm text-gray-600 font-semibold`}>{content.restaurant}</p>
+                    <Link to={`/f/${content.id}`}><p className={`text-lg font-bold`}>{content.name}</p></Link>
+                    <Link to={`/r/${content.restaurantId}`}><p
+                        className={`text-sm text-gray-600 font-semibold`}>{content.restaurantName}</p>
                     </Link>
                     <p className={`text-lg text-red-500 font-bold`}>रु.{content.price}</p>
                 </div>

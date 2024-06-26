@@ -2,10 +2,11 @@ import React, {useRef, useEffect} from "react";
 import FoodCard from "./FoodCard.tsx";
 import cardprops from "../utils/CardProps.tsx";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io";
+import {Product} from "../utils/types.ts";
 
 type Props = {
     title: string;
-    content: cardprops[];
+    content: Product[];
 };
 
 const CardGroupScroll: React.FC<Props> = ({title, content}) => {

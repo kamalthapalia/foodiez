@@ -10,7 +10,9 @@ const Hero = () => {
 
     })
     return (
-        <div className={`w-full h-[85vh] grid grid-cols-12 overflow-x-hidden overflow-hidden my-6`}>
+        <div
+            className={`w-full h-[85vh] grid grid-cols-12 relative overflow-x-hidden overflow-hidden py-6`}>
+            <div className={`absolute w-full h-full bg-gradient-to-br from-sky-50 to-white -z-50`}></div>
             <div className={`col-span-7 flex flex-col px-24 h-full gap-8 justify-center relative`}>
                 <div className={`absolute h-full w-full  -z-10`}>
                     <IoFastFoodOutline size={`50em`} className={`text-gray-200 -translate-x-1/2`}/>

@@ -32,11 +32,13 @@ const RatingAndReviews = () => {
         <div className={`min-h-screen mx-auto w-[800px]`}>
 
             <div>
-                <p className={`text-lg font-bold`}>Reviews</p>
-                <button
-                    className={`w-full mb-8 mt-3 border-2 rounded-lg text-gray-400 cursor-text text-left font-medium  border-gray-800 p-2`}
-                >Leave a review
-                </button>
+                <div className={`flex items-center gap-3 py-5`}>
+                    <p className={`text-lg font-bold`}>Reviews</p>
+                    <button
+                        className={`border-2 border-gray-600 rounded-full px-5 text-sm font-semibold py-1 hover:bg-gray-200 transition`}>Add
+                        review
+                    </button>
+                </div>
                 <div className={`flex flex-col gap-5`}>
                     {reviews?.map((value, index) => (
                         <Review reviewer={value.reviewer} rating={value.rating} review={value.review} key={index}/>))}

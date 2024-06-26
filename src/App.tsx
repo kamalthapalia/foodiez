@@ -14,6 +14,11 @@ import React from "react";
 import Footer from "./components/Footer.tsx";
 import FoodPageRes from "./pages/FoodPageRes.tsx";
 import ResPage from "./pages/ResPage.tsx";
+import Login from "./pages/Login.tsx";
+import UserSignupPage from "./pages/UserSignupPage.tsx";
+import Signup from "./pages/Signup.tsx";
+import RestaurantSignupPage from "./pages/RestaurantSignupPage.tsx";
+import UserProfilePage from "./pages/UserProfilePage.tsx";
 
 function App() {
     const cardData: cardprops[] = [
@@ -73,7 +78,11 @@ function App() {
                 <Route path={'/'} element={<HomePage/>}></Route>
                 <Route path={'/r/:id'} element={<HotelPage/>}></Route>
                 <Route path={'/f/:id'} element={<FoodPage/>}></Route>
-                <Route path={'/test'} element={<ResPage/>}></Route>
+                <Route path={'/r/me'} element={<ResPage/>}></Route>
+                <Route path={'/login'} element={<Login/>}></Route>
+                <Route path={'/signup'} element={<Signup/>}/>
+                <Route path={'/user'} element={<UserProfilePage/>}/>
+                <Route path={'/signup/restaurant'} element={<RestaurantSignupPage/>}/>
             </Routes>
             <Footer/>
         </div>
